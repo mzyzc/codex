@@ -1,0 +1,9 @@
+name: codex
+version: 0.1.0
+
+authors:
+  - mzyzc <mzyzc@czyz.xyz>
+
+crystal: 0.1.0
+
+license: MIT
