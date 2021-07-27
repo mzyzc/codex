@@ -54,6 +54,25 @@ module Codex
       @choices[name] = Choice.new(name, text, trigger, @scenes[next_scene])
     end
 
+    def edit_scene(name : String, *, text : String | Nil = nil, choices : Array(String) | Nil = nil)
+      scene = @scenes[name]
+      @scenes[name] = Scene.new(
+        name,
+        text.nil? ? scene.@text : text,
+        choices.nil? ? scene.@choices : get_choices(choices),
+      )
+    end
+
+    def edit_choice(name : String, *, text : String | Nil = nil, trigger : Proc | Nil = nil, next_scene : String)
+      choice = @choices[name]
+      @choices[name] = Choice.new(
+        name,
+        text.nil? ? choice.@text : text,
+        trigger.nil? ? choice.@trigger : trigger,
+        next_scene.nil? ? choice.@next_scene : @scenes[next_scene],
+      )
+    end
+
     def get_choices(choices : Array(String))
       choice_list = [] of Choice
       choices.each do |choice|
