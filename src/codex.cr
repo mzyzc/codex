@@ -34,6 +34,7 @@ module Codex
           input = gets
           next if input.nil?
 
+          break if !scene.is_a?(Scene)
           scene.@choices.each do |choice|
             if choice.triggered?(input)
               scene = choice.@next_scene
@@ -50,8 +51,9 @@ module Codex
       @scenes[name] = Scene.new(name, text, get_choices(choices))
     end
 
-    def add_choice(name : String, *, text : String, trigger : Proc, next_scene : String)
-      @choices[name] = Choice.new(name, text, trigger, @scenes[next_scene])
+    def add_choice(name : String, *, text : String, trigger : Proc, next_scene : String | Nil = nil)
+      next_scene = next_scene.nil? ? nil : @scenes[next_scene]
+      @choices[name] = Choice.new(name, text, trigger, next_scene)
     end
 
     def edit_scene(name : String, *, text : String | Nil = nil, choices : Array(String) | Nil = nil)
@@ -63,7 +65,7 @@ module Codex
       )
     end
 
-    def edit_choice(name : String, *, text : String | Nil = nil, trigger : Proc | Nil = nil, next_scene : String)
+    def edit_choice(name : String, *, text : String | Nil = nil, trigger : Proc | Nil = nil, next_scene : String | Nil = nil)
       choice = @choices[name]
       @choices[name] = Choice.new(
         name,

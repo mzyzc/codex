@@ -4,7 +4,7 @@ class Choice
     @name : String
     @text : String
     @trigger : Proc(String, Bool)
-    @next_scene : Scene
+    @next_scene : Scene | Nil
 
     def initialize(@name, @text, @trigger, @next_scene)
     end
