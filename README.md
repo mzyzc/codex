@@ -1,6 +1,6 @@
-# codex
+# Codex
 
-TODO: Write a description here
+A Crystal library for writing text-based games.
 
 ## Installation
 
@@ -9,7 +9,7 @@ TODO: Write a description here
    ```yaml
    dependencies:
      codex:
-       github: your-github-user/codex
+       github: mzyzc/codex
    ```
 
 2. Run `shards install`
@@ -18,9 +18,11 @@ TODO: Write a description here
 
 ```crystal
 require "codex"
+
+game = Codex::Game.new("Game Title")
 ```
 
-TODO: Write usage instructions here
+Initialize a `game` object and use it to create scenes and choices for the player.
 
 ## Development
 
@@ -28,7 +30,7 @@ TODO: Write development instructions here
 
 ## Contributing
 
-1. Fork it (<https://github.com/your-github-user/codex/fork>)
+1. Fork it (<https://github.com/mzyzc/codex/fork>)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
