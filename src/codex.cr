@@ -29,20 +29,24 @@ module Codex
         scene.run
 
         # Get user input
-        while true
+        matches_choice = false
+        while !matches_choice
+          break if scene.nil?
+
           print "#{@prompt} "
           input = gets
           next if input.nil?
 
-          break if !scene.is_a?(Scene)
           scene.@choices.each do |choice|
             if choice.triggered?(input)
+              matches_choice = true
               scene = choice.@next_scene
+              choice.run
               break
-            else
-              puts "Action not recognised"
             end
           end
+
+          puts "Action not recognised" if !matches_choice
         end
       end
     end
