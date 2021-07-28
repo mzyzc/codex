@@ -52,8 +52,6 @@ module Codex
               break
             end
           end
-
-          puts "Action not recognised" if !matches_choice
         end
       end
     end
