@@ -33,13 +33,12 @@ module Codex
         while !matches_choice
           break if scene.nil?
 
-          print "#{@prompt} "
-          input = gets
+          input = get_input
           next if input.nil?
 
           scene.@choices.each do |choice_name|
             choice = @choices[choice_name]
-            if choice.triggered?(input.downcase)
+            if choice.triggered?(input)
               matches_choice = true
 
               if @scenes.has_key?(choice.@next_scene)
@@ -98,6 +97,12 @@ module Codex
       end
 
       puts
+    end
+
+    private def get_input()
+      print "#{@prompt} "
+      input = gets
+      return input.nil? ? nil : input.downcase
     end
   end
 end
