@@ -22,11 +22,13 @@ module Codex
       # Preamble
       puts @title
       puts "#{@author}, #{@date}"
+      puts
 
       # Scene loop
       scene : Scene | Nil = @scenes[scene_name]
       while scene
         scene.run
+        puts
 
         # Get user input
         matches_choice = false
@@ -49,11 +51,13 @@ module Codex
               end
 
               choice.run
+              puts
               break
             end
           end
         end
       end
+      puts "GAME OVER"
     end
       
     def add_scene(name : String, *, text : String, choices : Array(String))
