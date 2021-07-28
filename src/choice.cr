@@ -1,10 +1,8 @@
-require "./scene"
-
 class Choice
     @name : String
     @text : String
     @trigger : Proc(String, Bool)
-    @next_scene : Scene | Nil
+    @next_scene : String | Nil
 
     def initialize(@name, @text, @trigger, @next_scene)
     end
