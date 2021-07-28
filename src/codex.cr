@@ -39,7 +39,7 @@ module Codex
 
           scene.@choices.each do |choice_name|
             choice = @choices[choice_name]
-            if choice.triggered?(input)
+            if choice.triggered?(input.downcase)
               matches_choice = true
 
               if @scenes.has_key?(choice.@next_scene)
