@@ -20,9 +20,7 @@ module Codex
 
     def run(scene_name : String)
       # Preamble
-      puts @title
-      puts "#{@author}, #{@date}"
-      puts
+      print_preamble(@title, @author, @date)
 
       # Scene loop
       scene : Scene | Nil = @scenes[scene_name]
@@ -86,6 +84,20 @@ module Codex
         trigger.nil? ? choice.@trigger : trigger,
         next_scene.nil? ? choice.@next_scene : next_scene,
       )
+    end
+
+    private def print_preamble(title, author, date)
+      puts @title
+
+      if author && date
+        puts "#{@author}, #{@date}"
+      elsif author
+        puts author
+      elsif date
+        puts date
+      end
+
+      puts
     end
   end
 end
