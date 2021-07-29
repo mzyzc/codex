@@ -29,29 +29,24 @@ module Codex
         puts
 
         # Get user input
-        matches_choice = false
-        while !matches_choice
+        match : Choice | Nil = nil
+        while !match
           break if scene.nil?
 
           input = get_input
           next if input.nil?
 
-          scene.@choices.each do |choice_name|
-            choice = @choices[choice_name]
-            if choice.triggered?(input)
-              matches_choice = true
+          match = match_choice(input, scene)
+          next if match.nil?
 
-              if @scenes.has_key?(choice.@next_scene)
-                scene = @scenes[choice.@next_scene]
-              else
-                scene = nil
-              end
-
-              choice.run
-              puts
-              break
-            end
+          if @scenes.has_key?(match.@next_scene)
+            scene = @scenes[match.@next_scene]
+          else
+            scene = nil
           end
+
+          match.run
+          puts
         end
       end
       puts "GAME OVER"
@@ -103,6 +98,20 @@ module Codex
       print "#{@prompt} "
       input = gets
       return input.nil? ? nil : input.downcase
+    end
+
+    private def match_choice(input : String, scene : Scene)
+      match = nil
+
+      scene.@choices.each do |choice_name|
+        choice = @choices[choice_name]
+          if choice.triggered?(input)
+            match = choice
+            break
+          end
+      end
+
+      return match
     end
   end
 end
