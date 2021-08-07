@@ -20,13 +20,31 @@ A Crystal library for writing text-based games.
 require "codex"
 
 game = Codex::Game.new("Game Title")
+
+game.add_scene(
+  "start",
+  text: "Win or lose?",
+  choices: ["win", "lose"],
+)
+
+game.add_choice(
+  "win",
+  text: "You won!",
+  trigger: ->(text : String) { return text.includes?("win") },
+  next_scene: nil,
+)
+
+game.add_choice(
+  "lose",
+  text: "The spider keeps moving",
+  trigger: ->(text : String) { return text.includes?("lose") },
+  next_scene: "start",
+)
+
+game.run("start")
 ```
 
 Initialize a `game` object and use it to create scenes and choices for the player.
-
-## Development
-
-TODO: Write development instructions here
 
 ## Contributing
 
