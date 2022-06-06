@@ -65,4 +65,4 @@ Initialize a `game` object and use it to create scenes and choices for the playe
 
 ## Contributors
 
-- [mzyzc](https://git.sr.ht/~mzyzc/) - creator and maintainer
+- [mzyzc](https://github.com/mzyzc) - creator and maintainer
