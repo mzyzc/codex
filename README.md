@@ -48,11 +48,20 @@ Initialize a `game` object and use it to create scenes and choices for the playe
 
 ## Contributing
 
+### Github
+
 1. Fork it (<https://github.com/mzyzc/codex/fork>)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
+
+### Sourcehut
+
+1. Clone repository
+2. Make and commit your changes
+3. Send the commits as a patch to one of the maintainers below using
+	git send-email. see [this](https://git-send-email.io/) for a guide.
 
 ## Contributors
 
